@@ -1,0 +1,309 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html{
+    scroll-behavior: smooth; /* scroll suave - > mouse suave */ 
+}
+
+:root{ /* raiz */ 
+
+    --cor-primaria: #824D69;
+    --cor-secundaria: #522959;
+    --escuro: #2A114B;
+    --maisEscuro:#180018;
+    --claro: #faf2f1;
+    --vidro1: rgba(255, 255, 255, 0.1);
+}
+
+body{
+    background-color: var(--maisEscuro);
+    color: var(--claro);
+}
+/*------------------------------------------------------------------------------------------------------------*/
+.navegacao{
+    position:fixed; /* fica fixado conforme a tela mexe*/
+    top: 0;
+    background-color: rgba(49, 3, 29, 0.8); /* cor transparente da barra*/
+    width: 100%;
+    z-index: 100; 
+    padding: 1.5rem;
+}
+
+.menu{
+    display: flex; /* coloca um do lado do outro*/
+    list-style: none; /* retira as bolinhas */ 
+    gap: 3rem; /* espaço entre os itens*/
+    justify-content: center;
+}
+
+.menu-link{
+    text-decoration: none; /* tira a linha debaixo dos itens*/ 
+    color: var(--claro);
+    font-weight:  500; /* deixa a font mais grossa*/
+    position: relative;
+    padding: 0.5rem 0;
+
+}
+
+/* after - before */
+.menu-link::after{
+    content: "";
+    height: 2px;
+    width:  0;
+    position: absolute; 
+    bottom:0; /*tudo pra  baixo*/ 
+    left: 0; /* tudo pro lado*/ 
+    background: linear-gradient(90deg,rgba(28, 0, 41, 1) 0%, rgba(62, 19, 99, 1) 32%, rgba(117, 43, 181, 1) 100%);
+    transition: width 0.5s ease;
+}
+
+.menu-link:hover::after{
+   width: 100%
+}
+
+
+/*------------------------------------------------------------------------------------------------------------*/
+
+.cabecalho{
+    min-height: 100vh;
+    display:flex;
+    align-items: center;
+    flex-direction: column; /* deixa os itens em */
+}
+
+
+
+.cabecalho-principal {
+    background-color: var(--azul); /* Cor de fundo da seção (usando variável) */
+    height: 100vh; /* Ocupa 100% da altura da tela */
+    display: flex; /* Ativa o flexbox */
+    justify-content: space-between; /* Espaço entre os itens (bolha e texto) */
+    flex-direction:column
+
+}
+
+.bolha {
+    background-color: var(--verde); /* Fundo da bolha */
+    width: 900px; /* Largura da bolha */
+    height: 900px; /* Altura da bolha */
+    display: flex; /* Flexbox */
+    flex-direction: column; /* Coloca imagem e nome em coluna */
+    justify-content: center; /* Centraliza verticalmente */
+    position:absolute; /* Necessário para posicionar imagem de forma absoluta */
+    top: 50%; /* Centraliza verticalmente */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta a posição para o centro */
+    border-radius: 50%; /* Bordas arredondadas */
+    overflow: hidden; /* Esconde o que ultrapassa a bolha */
+}
+
+.foto-perfil {
+    position: absolute; /* Posiciona em relação à bolha */
+    width: 40%; /* Tamanho da imagem */
+    height: 40%;
+    border-radius: 60%; /* Torna a imagem redonda */
+    left: 30%; /* Centraliza horizontalmente */
+    object-fit: cover; /* Garante que a imagem cubra todo o espaço */
+}
+
+
+h1{
+    font-size: 4rem;
+    color: var(--cor-primaria);
+    font-weight: bold;
+    margin: 20px ;
+    margin-bottom: 2rem;
+}
+
+
+.cabecalho-subtitulo{
+    font-size: 1.5rem;
+    color: var (--claro)
+
+}
+
+/*------------------------------------------------------------------------------------------------------------*/
+.sobre{
+    padding: 6rem 2rem;
+
+
+}
+
+.sobre-titulo{
+    font-weight: 3rem;
+    color: var(--claro);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+
+}
+
+.sobre-caixa{
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto; /* serve para centralizar*/
+    border-radius: 16px;
+    border: 1px solid var(--vidro1);
+    backdrop-filter: blur(10px); /* serve para deixar o fundo mais transparente*/
+    background: rgba(255, 255, 255, 0.05); /* serve para deixar o fundo mais transparente*/
+}
+
+.sobre-paragrafo{
+    text-align: center;
+    font-size: 1rem;
+   
+}
+
+/*------------------------------------------------------------------------------------------------------------*/
+
+
+.projetos{
+    padding: 6rem 2rem;
+
+    
+}
+.projetos-titulo{
+    text-align:center ;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+}
+
+
+.projetos-caixa{
+    display:grid; /* serve para colocar os itens em linha*/
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.projetos-card{
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    backdrop-filter: blus (5px);
+    border: 1px solid var(--vidro1);
+    overflow: hidden;
+    transition: all 0.5s ease;
+    cursor:pointer;
+}
+
+.projetos-card:hover{
+    box-shadow: -20px 38px 70px -1px rgba(89,23,89,1);
+    transform: translateY(-10px) scale(1.03);
+}
+
+.projetos-imagem{
+
+    height: 200px;
+    width: 100%;
+    object-fit: cover; /* serve para o tamanho da imagem não ficar maior que o tamanho do card*/
+
+}
+
+.info-projetos{
+    margin-bottom: 5px;
+}
+
+.paragrafo-projetos{
+    color: rgba(226, 232, 240, 0.8);
+    line-height: 1.25rem;
+}
+
+.caixa-textos-projetos{
+    padding: 1.5rem;
+}
+/*------------------------------------------------------------------------------------------------------------*/
+
+.contato{
+    padding: 6rem 2rem;
+    
+}
+
+.contato-titulo{
+    text-align:center;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+}
+
+.fomrulario-contato{
+    max-width: 600px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    padding: 2rem;
+    border: 1px  solid var(--vidro1);
+    border-radius: 16px;
+}
+
+.grupo-form{
+    margin-bottom: 1.5rem;
+
+}
+
+
+.campo-form{
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    color: var(--claro);
+    border: 1px solid var(--vidro1);
+    outline: none;
+}
+
+.campo-form:focus{
+    border: 1px solid var(--cor-primaria);
+    box-shadow: #794483;
+}
+ 
+.botao-formulario{
+    color: var(--claro);
+    background: linear-gradient(45deg, var(--cor-primaria), var(--cor-secundaria));
+    padding: 1rem 2rem;
+    border:none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100%;
+    transition: all 0.5s ease;
+}
+
+.botao-formulario:hover{
+    transform: translateY(-4px);
+    box-shadow:0 5px 15px  rgba(79, 70, 229, 0.4);
+}
+
+.particulas{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; 
+    z-index: -1;
+    opacity: 0.5;
+    background:
+    radial-gradient(circle at 10% 20%, var(--cor-primaria) 0%, transparente 20%),
+    radial-gradient(circle at 90% 80%, var(--cor-secundaria) 0%, transparente 20%),
+    var(--maisEscuro);
+}
+
+
+
+
+@media (max-width: 768px) {
+    .navbar {
+        width: 100%; /* Navbar ocupa toda a largura */
+        padding: 1rem; /* Menos padding */
+    }
+    .msg {
+        font-size: 2em; /* Reduz o tamanho do título */
+    }
+    .bolha {
+        width: 90%; /* Ajusta a bolha em telas menores */
+        height: auto;
+    }
+}
